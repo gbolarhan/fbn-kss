@@ -8,6 +8,7 @@ var filesToCache = [
 	'/fbn-kss/css/material.indigo-pink.min.css',
 	'/fbn-kss/img/fbn-h.png',
 	'/fbn-kss/img/fbn-v.png',
+	'/fbn-kss/img/giphy.gif',
 	'/fbn-kss/utilities/js/app.js',
 	'/fbn-kss/toast/build/toastr.min.js',
 	'/fbn-kss/utilities/js/jquery-3.2.1.min.js',
