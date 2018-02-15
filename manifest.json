@@ -3,7 +3,7 @@
 	"name" : "FBN-PWA",
 	"icons" : [
 		{
-			"src" : "/img/fbn-h.png",
+			"src" : "/fbn-kss/img/fbn-h.png",
 			"sizes" : "192x192",
 			"type" : "image/png"
 		}
