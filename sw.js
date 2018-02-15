@@ -1,6 +1,6 @@
 var cacheName = 'fbn-cache-v1';
 var filesToCache = [
-	'/fbn-kss',
+	'/fbn-kss/',
 	'/fbn-kss/index.html',
 	'/fbn-kss/css/app.css',
 	'/fbn-kss/css/bootstrap.min.css',
@@ -26,7 +26,7 @@ self.addEventListener('install', function(reg) {
 })
 
 self.addEventListener('fetch', function(event){
-	console.log(event.request.url);
+	console.log("Fetching :"+event.request.url);
 	event.respondWith(
 		caches.match(event.request).then(function(response) {
 			return response || fetch(event.request);
