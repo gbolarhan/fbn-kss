@@ -1,16 +1,16 @@
 var cacheName = 'fbn-cache-v1';
 var filesToCache = [
-	'/',
-	'/index.html',
-	'/css/app.css',
-	'/css/bootstrap.min.css',
-	'/css/font-awesome.min.css',
-	'/css/material.indigo-pink.min.css',
-	'/img/nn.min.png',
-	'/utilities/js/app.js',
-	'/toast/build/toastr.min.js',
-	'/utilities/js/jquery-1.11.2.js',
-	'/utilities/js/bootstrap.min.js',
+	'/fbnkss',
+	'/fbnkss/index.html',
+	'/fbnkss/css/app.css',
+	'/fbnkss/css/bootstrap.min.css',
+	'/fbnkss/css/font-awesome.min.css',
+	'/fbnkss/css/material.indigo-pink.min.css',
+	'/fbnkss/img/nn.min.png',
+	'/fbnkss/utilities/js/app.js',
+	'/fbnkss/toast/build/toastr.min.js',
+	'/fbnkss/utilities/js/jquery-1.11.2.js',
+	'/fbnkss/utilities/js/bootstrap.min.js',
 	'https://fonts.googleapis.com/icon?family=Material+Icons',
 	'https://fonts.googleapis.com/css?family=Lobster'
 ];
