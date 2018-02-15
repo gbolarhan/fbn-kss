@@ -10,7 +10,7 @@ var filesToCache = [
 	'/fbn-kss/img/fbn-v.png',
 	'/fbn-kss/utilities/js/app.js',
 	'/fbn-kss/toast/build/toastr.min.js',
-	'/fbn-kss/utilities/js/jquery-3.2.1.js',
+	'/fbn-kss/utilities/js/jquery-3.2.1.min.js',
 	'/fbn-kss/utilities/js/bootstrap.min.js',
 	'https://fonts.googleapis.com/icon?family=Material+Icons',
 	'https://fonts.googleapis.com/css?family=Lobster'
