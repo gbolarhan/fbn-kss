@@ -49,38 +49,37 @@
   </nav>  
 
    <!-- first section - Home -->
-  <div class="container-fluid" style="margin-top:10vh;">  
-    <img src="img/giphy.gif" class="img-responsive" style="display:block;margin-left:auto;margin-right:auto;width:100vw;" >
+  <div class="container-fluid" style="margin-top:10vh;"> 
     <div class="row">
-        <div class="form-group col-sm-12">
-            <h2>Add new TODO List</h2>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input " type="text" id="input">
-                <label class="mdl-textfield__label" for="sample3">I want to ...</label>
+        <img src="img/giphy.gif" class="img-responsive" style="display:block;margin-left:auto;margin-right:auto;width:100vw;" >
+        <div class="col-sm-12">
+            <div class="form-group">
+                <h2>Add TODO List</h2>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input " type="text" id="input">
+                    <label class="mdl-textfield__label" for="sample3">I want to ...</label>
+                </div>
+                <button onclick="addTodo()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success " id="addBtn">Add TODO</button>
+                <button onclick="clearAll()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-danger" id="clearBtn">Clear TODO</button>
             </div>
-            <button onclick="addTodo()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success " id="addBtn">Add TODO</button>
-            <button onclick="clearAll()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-danger" id="clearBtn">Clear TODO</button>
+            <!-- Remove dummy data and show todos from indexed db -->
+            <div class="form-group">            
+                <p>
+                  <ul id="todos" class="list-group">
+                      <li class="list-group-item">Attend IndexedDB and Push Notifications Event <span class="btn-link pull-right">Delete</span></li>
+                      <li class="list-group-item">See a movie <span class="btn-link pull-right">Delete</span></li>
+                      <li class="list-group-item">Build a robot <span class="btn-link pull-right">Delete</span></li>
+                  </ul>
+                </p>
+            </div>
         </div>
-        <!-- Remove dummy data and show todos from indexed db -->
-        <div class="form-group col-sm-12">            
-            <p>
-              <ul id="todos" class="list-group">
-                  <li class="list-group-item">Attend IndexedDB and Push Notifications Event <span class="btn-link pull-right">Delete</span></li>
-                  <li class="list-group-item">See a movie <span class="btn-link pull-right">Delete</span></li>
-                  <li class="list-group-item">Build a robot <span class="btn-link pull-right">Delete</span></li>
-              </ul>
-            </p>
+        <div class="col-sm-12">
+                  <div class="form-group">
+                      <h2>Subscribe to Push Notification</h2>
+                      <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success" id="subscribe">Subscribe</button>
+                  </div> 
         </div>
-      </div>
-      <div class="row">
-          <div class=" col-sm-12">
-              <div class="form-group">
-                  <h2>Subscribe to Push Notification</h2>
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success" id="subscribe">Subscribe</button>
-              </div> 
-          </div>
-      </div>
-    </div>  
+    </div> 
   </div>
     
 
