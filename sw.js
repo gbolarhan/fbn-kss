@@ -1,4 +1,4 @@
-var cacheName = 'fbn-cache-v1';
+var cacheName = 'fbn-cache-v2';
 var filesToCache = [
 	'/fbn-kss/',
 	'/fbn-kss/index.html',
@@ -10,6 +10,8 @@ var filesToCache = [
 	'/fbn-kss/img/fbn-v.png',
 	'/fbn-kss/img/giphy.gif',
 	'/fbn-kss/utilities/js/app.js',
+	'/fbn-kss/js/app.js',
+	'/fbn-kss/js/idb.js',
 	'/fbn-kss/toast/build/toastr.min.js',
 	'/fbn-kss/utilities/js/jquery-3.2.1.min.js',
 	'/fbn-kss/utilities/js/bootstrap.min.js',
