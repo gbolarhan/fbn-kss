@@ -9,9 +9,8 @@ var filesToCache = [
 	'/fbn-kss/img/fbn-h.png',
 	'/fbn-kss/img/fbn-v.png',
 	'/fbn-kss/img/giphy.gif',
+	'/fbn-kss/utilities/js/idb.js',
 	'/fbn-kss/utilities/js/app.js',
-	'/fbn-kss/js/app.js',
-	'/fbn-kss/js/idb.js',
 	'/fbn-kss/toast/build/toastr.min.js',
 	'/fbn-kss/utilities/js/jquery-3.2.1.min.js',
 	'/fbn-kss/utilities/js/bootstrap.min.js',
@@ -48,3 +47,36 @@ self.addEventListener('activate',function(event){
 		}))
 	})
 })
+
+self.addEventListener('push', function (event) {
+	console.log('Push message received', event);
+	var title = 'Push Message';
+	// Show notification
+	event.waitUntil(
+		self.registration.showNotification(title, {
+			body: 'The Message',
+			icon: 'img/nn.min.png',
+			tag: 'my-tag'
+		})
+	);
+});
+
+self.addEventListener('notificationclick', function (event) {
+	console.log('Notification click: tag', event.notification.tag);
+	event.notification.close();
+	var url = 'https://attending.io/events/buildpwa-v2';
+	event.waitUntil(
+		clients.matchAll({
+			type: 'window'
+		}).then(function (windowClients) {
+			windowClients.forEach(function (client) {
+				if (client.url == url && 'focus' in client) {
+					return client.focus();
+				}
+			});
+			if (clients.openWindow) {
+				return clients.openWindow(url);
+			}
+		})
+	);
+});

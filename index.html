@@ -49,27 +49,42 @@
   </nav>  
 
    <!-- first section - Home -->
-  <div id="home" class="home" style="margin-top:10vh;padding-left:15px; padding-right: 15px;">  
+  <div class="container-fluid" style="margin-top:10vh;">  
     <img src="img/giphy.gif" class="img-responsive" style="display:block;margin-left:auto;margin-right:auto;width:100vw;" >
-
-    <h3>TODOs</h3>
-    <!-- Remove dummy data and show todos from indexed db -->
-    <ul id="todos" class="list-group">
-        <li class="list-group-item">Attend IndexedDB and Push Notifications Event <span class="btn-link pull-right">Delete</span></li>
-        <li class="list-group-item">See a movie <span class="btn-link pull-right">Delete</span></li>
-        <li class="list-group-item">Build a robot <span class="btn-link pull-right">Delete</span></li>
-    </ul>
-    <div class="form-group">
-        <input id="input" type="text" class="form-control input-lg" placeholder="I want to"/>
-    </div>
-    <button onclick="addTodo()" class="btn btn-lg btn-success" id="addBtn">Add TODO</button>
-    <button onclick="clearAll()" class="btn btn-danger" id="clearBtn">Clear</button>
-
-    <br/>
-    <br/>
-    <button class="btn btn-lg btn-success" id="subscribe">Subscribe</button>
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2>Add new TODO List</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input " type="text" id="input">
+                <label class="mdl-textfield__label" for="sample3">I want to ...</label>
+            </div>
+            <button onclick="addTodo()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success " id="addBtn">Add TODO</button>
+            <button onclick="clearAll()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-danger" id="clearBtn">Clear TODO</button>
+        </div>
+        <!-- Remove dummy data and show todos from indexed db -->
+        <div class="form-group col-sm-12">            
+            <p>
+              <ul id="todos" class="list-group">
+                  <li class="list-group-item">Attend IndexedDB and Push Notifications Event <span class="btn-link pull-right">Delete</span></li>
+                  <li class="list-group-item">See a movie <span class="btn-link pull-right">Delete</span></li>
+                  <li class="list-group-item">Build a robot <span class="btn-link pull-right">Delete</span></li>
+              </ul>
+            </p>
+        </div>
+      </div>
+      <div class="row">
+          <div class=" col-sm-12">
+              <div class="form-group">
+                  <h2>Subscribe to Push Notification</h2>
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success" id="subscribe">Subscribe</button>
+              </div> 
+          </div>
+      </div>
+    </div>  
   </div>
-  <div id="footer" class='navbar-fixed-bottom' >
+    
+
+  <div id="footer" class='navbar-static-bottom' >
       <div class="container text-center">            
         <p class="muted credit">
         <strong><a href='tel:+2348162514280'><i class='fa fa-phone-square'></i> 08162514280</a></strong><br>
@@ -86,8 +101,7 @@
       </div>
       
   </div>
-  <script src="js/idb.js" type="text/javascript"></script>
-  <script src="js/app.js" type="text/javascript"></script>
+  <script src="utilities/js/idb.js" type="text/javascript"></script>
   <script src="utilities/js/app.js" type="text/javascript"></script>
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
   <script src="utilities/js/jquery-3.2.1.min.js"></script>
