@@ -364,6 +364,10 @@ input[type=search] {
     border-color: transparent
 }
 
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
 .navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover {
     background-color: transparent
 }
