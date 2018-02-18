@@ -59,8 +59,8 @@
                     <input class="mdl-textfield__input " type="text" id="input">
                     <label class="mdl-textfield__label" for="sample3">I want to ...</label>
                 </div>
-                <button onclick="clearAll()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-danger" id="clearBtn">Clear TODO</button>
-                <button onclick="addTodo()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success " id="addBtn">Add TODO</button>
+                <button onclick="fbn.clearAll()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-danger" id="clearBtn">Clear TODO</button>
+                <button onclick="fbn.addTodo()" class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success " id="addBtn">Add TODO</button>
             </div>
             <!-- Remove dummy data and show todos from indexed db -->
             <div class="form-group">            
@@ -73,7 +73,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-12" id="#pushSection">
                   <div class="form-group">
                       <h2>Subscribe to Push Notification</h2>
                       <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn btn-lg btn-success" id="subscribe">Subscribe</button>
@@ -101,6 +101,7 @@
       
   </div>
   <script src="utilities/js/idb.js" type="text/javascript"></script>
+  <script src="utilities/js/serviceWorker.js" type="text/javascript"></script>
   <script src="utilities/js/app.js" type="text/javascript"></script>
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
   <script src="utilities/js/jquery-3.2.1.min.js"></script>
