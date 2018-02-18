@@ -1,25 +1,31 @@
 class theServiceWorker {    
     constructor() {
-        this.reg = {};
-        this.sub;
-        this.isSubscribed = false;
-        this.subscribeButton = document.querySelector('#subscribe');
-        this.serviceWorkerFile = "/fbn-kss/sw.js";        
+        let reg = {};
+        var sub = {};
+        var isSubscribed = false;
+        var subscribeButton = document.querySelector('#subscribe');
+        var serviceWorkerFile = "/fbn-kss/sw.js";  
+        
+        this.reg = reg;
+        this.sub = sub;
+        this.isSubscribed = isSubscribed;
+        this.subscribeButton = subscribeButton;
+        this.serviceWorkerFile = serviceWorkerFile;
+
     }
 
     kickStartServiceWorker() {
-        this.performAllRegistrations();
-        this.addClickListener();
+        let registrationObject = this.performAllRegistrations();        
+        this.addClickListener(registrationObject,this.subscribeButton,this.isSubscribed);
     }
 
     performAllRegistrations() {
         this.checkForServiceWorker();
         this.checkForPushManager();            
-        navigator.serviceWorker.register(this.serviceWorkerFile).then(function (serviceWorkerRegistration) {
+        navigator.serviceWorker.register(this.serviceWorkerFile).then( (serviceWorkerRegistration) => {
             console.log(':^)', serviceWorkerRegistration);
-            this.reg = serviceWorkerRegistration;
-            this.subscribeButton.disabled = false;
-        }).catch(function (err) {
+            this.addClickListener(registrationObject,this.subscribeButton,this.isSubscribed);
+        }).catch( (err) => {
             console.error(':^(', err);
         });
     }
@@ -41,35 +47,36 @@ class theServiceWorker {
         console.log("Push Manager available");
     }
 
-    addClickListener() {
-        this.subscribeButton.addEventListener('click', function () {
-            if (this.isSubscribed) {
-                this.unsubscribe();
+    addClickListener(registration,subscribeButton,isSubscribed) {
+        subscribeButton.disabled = false; 
+        subscribeButton.addEventListener('click', () => {
+            if (isSubscribed) {
+                this.unsubscribe(this.sub,subscribeButton,isSubscribed);
             } else {
-                this.subscribe();
+                this.sub = this.subscribe(registration,subscribeButton,isSubscribed);
             }
         });
     }
 
     // TODO Implement subscribe function
-    subscribe() {
-        this.reg.pushManager.subscribe({
+    subscribe(registration,subscribeButton,isSubscribed) {
+        registration.pushManager.subscribe({
             userVisibleOnly: true
-        }).then(function (pushSubscription) {
+        }).then((pushSubscription) => {
             this.sub = pushSubscription;
-            console.log('Subscribed! endpoint:', sub.endpoint);
-            this.subscribeButton.textContent = 'Unsubscribe';
-            this.isSubscribed = true;
+            console.log('Subscribed! endpoint:', pushSubscription.endpoint);
+            subscribeButton.textContent = 'Unsubscribe';
+            isSubscribed = true;
         })
     }
 
     // TODO Implement unsubscribe function
-    unsubscribe() {
-        this.sub.unsubscribe().then(function (event) {
+    unsubscribe(subscriptionObject,subscribeButton,isSubscribed) {
+        subscriptionObject.unsubscribe().then( (event) => {
             this.subscribeButton.textContent = 'Subscribe';
             console.log('Unsubscribed!', event);
             this.isSubscribed = false;
-        }).catch(function (error) {
+        }).catch( (error) => {
             console.log('Error unubscribing', error);
             this.subscribeButton.textContent = 'Subscribe';
         })

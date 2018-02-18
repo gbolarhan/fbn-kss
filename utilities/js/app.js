@@ -1,56 +1,64 @@
 class app {
     constructor() {
-        this.dbName = "fbn-kss-codedlab";
-        this.dbVersion = 1;
-        this.addTodoButton = document.querySelector('#addBtn');
-        this.todoInput = document.querySelector('#input');
-        this.todosContainer = document.querySelector("#todos");
+
+        var dbName = "fbn-kss-codedlab";
+        var dbVersion = 1;
+        var addTodoButton = document.querySelector('#addBtn');
+        var todoInput = document.querySelector('#input');
         var serviceWorker = new theServiceWorker();
+        var indexedDB = new IndexedDBEngine(dbName, dbVersion);
+        this.dbName = dbName;
+        this.dbVersion = dbVersion;
+        this.addTodoButton = addTodoButton;
+        this.todoInput = todoInput;
+        this.indexedDbEngine = indexedDB;
+        
         serviceWorker.kickStartServiceWorker();
-        var indexedDbEngine = new IndexedDBEngine(this.dbName, this.dbVersion);
+        this.addListenerAfterDomLoad();
     }
 
-    renderTodos() {
-        this.todosContainer.innerHTML = '';
-        this.indexedDbEngine.getAllTodos(function (todo) {
+    renderTodos() { 
+        var todosContainer = document.querySelector("#todos");       
+        todosContainer.innerHTML = '';
+        this.indexedDbEngine.getAllTodos((todo) => {
             var li = document.createElement('li');
-            li.innerHTML = todo.text + ' <span data-id="' + todo.id + '" onclick="deleteTodo(this)" class="btn-link pull-right">Delete</span>';
+            li.innerHTML = todo.text + ' <span data-id="' + todo.id + '" onclick="fbn.deleteTodo(this)" class="btn-link pull-right">Delete</span>';
             li.className = 'list-group-item';
-            this.todosContainer.appendChild(li);
+            todosContainer.appendChild(li);
         });
     }
 
     addTodo() {
-        var todo = todoInput.value.trim();
+        var todo = this.todoInput.value.trim();
         if (todo.length > 0) {
-            this.indexedDbEngine.addTodo({
+            this.indexedDbEngine.addToDo({
                 'text': todo,
                 'datetime': new Date().toISOString()
             });
-            todoInput.value = '';
+            this.todoInput.value = '';
         }
         this.renderTodos();
     }
 
     clearAll() {
         this.indexedDbEngine.clearAllTodos();
-        renderTodos();
+        this.renderTodos();
     }
 
     deleteTodo() {
         var _this = event.target;
         var id = _this.dataset.id;
-        this.indexedDbEngine.deleteTodo(id, function () {
+        this.indexedDbEngine.deleteTodo(id, () => {
             this.renderTodos();
         });
     }
     
     addListenerAfterDomLoad() {
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
             this.renderTodos();
-            todoInput.addEventListener('keyup', function (event) {
+            this.todoInput.addEventListener('keyup', (event) => {
                 if(event.keyCode == 13) {
-                    this.addTodoButton.click();
+                    appObject.addTodoButton.click();
                 }
             });
         }, false);
@@ -58,49 +66,3 @@ class app {
 }
 
 var fbn = new app();
-
-// var indexedDbEngine = new IndexedDBEngine(dbName, dbVersion);
-
-// function renderTodos() {
-//     todosContainer.innerHTML = '';
-//     indexedDbEngine.getAllTodos(function (todo) {
-//         var li = document.createElement('li');
-//         li.innerHTML = todo.text + ' <span data-id="' + todo.id + '" onclick="deleteTodo(this)" class="btn-link pull-right">Delete</span>';
-//         li.className = 'list-group-item';
-//         todosContainer.appendChild(li);
-//     });
-// }
-
-// function addTodo() {
-//     var todo = todoInput.value.trim();
-//     if (todo.length > 0) {
-//         indexedDbEngine.addTodo({
-//             'text': todo,
-//             'datetime': new Date().toISOString()
-//         });
-//         todoInput.value = '';
-//     }
-//     renderTodos();
-// }
-
-// function clearAll() {
-//     indexedDbEngine.clearAllTodos();
-//     renderTodos();
-// }
-
-// function deleteTodo() {
-//     var _this = event.target;
-//     var id = _this.dataset.id;
-//     indexedDbEngine.deleteTodo(id, function () {
-//         renderTodos();
-//     });
-// }
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     renderTodos();
-//     todoInput.addEventListener('keyup', function (event) {
-//         if(event.keyCode == 13) {
-//             addTodoButton.click();
-//         }
-//     });
-// }, false);
