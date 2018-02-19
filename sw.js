@@ -21,9 +21,7 @@ var filesToCache = [
 	'/fbn-kss/fonts/fontawesome-webfont.eot',
 	'/fbn-kss/fonts/fontawesome-webfont.svg',
 	'/fbn-kss/fonts/fontawesome-webfont.woff',
-	'/fbn-kss/fonts/fontawesome-webfont.ttf',
-	'https://fonts.googleapis.com/icon?family=Material+Icons',
-	'https://fonts.googleapis.com/css?family=Lobster'
+	'/fbn-kss/fonts/fontawesome-webfont.ttf'
 ];
 
 self.addEventListener('install', function(reg) {
