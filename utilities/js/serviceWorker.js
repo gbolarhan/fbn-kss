@@ -15,8 +15,8 @@ class theServiceWorker {
     }
 
     kickStartServiceWorker() {
-        let registrationObject = this.performAllRegistrations();        
-        this.addClickListener(registrationObject,this.subscribeButton,this.isSubscribed);
+        this.performAllRegistrations();        
+        //this.addClickListener(registrationObject,this.subscribeButton,this.isSubscribed);
     }
 
     performAllRegistrations() {
@@ -24,7 +24,7 @@ class theServiceWorker {
         this.checkForPushManager();            
         navigator.serviceWorker.register(this.serviceWorkerFile).then( (serviceWorkerRegistration) => {
             console.log(':^)', serviceWorkerRegistration);
-            this.addClickListener(registrationObject,this.subscribeButton,this.isSubscribed);
+            this.addClickListener(serviceWorkerRegistration,this.subscribeButton,this.isSubscribed);
         }).catch( (err) => {
             console.error(':^(', err);
         });
